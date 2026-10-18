@@ -1,0 +1,4 @@
+VGA self-test for RTU FPGA bring-up.
+The standard Tiny Tapeout interface, SKY metadata/configuration conventions and VGA timing follow the official Tiny Tapeout SKY template a42e6662fab316e93b4e26399e21d41664a460b7 and the RTU Phone Flight project.
+The FPGA composite action is attributed in .github/actions/fpga/NOTICE and retains its Apache-2.0 license.
+This diagnostic does not modify or submit a shared shuttle design.

@@ -1,0 +1,25 @@
+name: Tests
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  rtl:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Install RTL tools
+        run: sudo apt-get update && sudo apt-get install -y iverilog verilator
+      - name: RTL lint
+        run: verilator --lint-only -Wall -Wno-DECLFILENAME --top-module tt_um_emre_vga_selftest src/project.v src/vga_timing.v
+      - name: Timing, animation and rendered frames
+        run: bash test/run_checks.sh
+      - name: SDK/upload helper unit tests
+        run: python -m unittest discover -s fpga -p 'test*.py' -v
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: rtl-evidence
+          path: test/output/

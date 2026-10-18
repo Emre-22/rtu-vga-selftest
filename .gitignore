@@ -1,0 +1,10 @@
+test/output/
+**/__pycache__/
+*.pyc
+build/
+tt/
+runs/
+src/user_config.json
+src/config_merged.json
+board-backup/
+.venv/
