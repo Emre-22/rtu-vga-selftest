@@ -28,7 +28,7 @@ module tt_um_emre_vga_selftest(
  reg [1:0] red,green,blue;
  integer i;
  always @* begin
-  red=0;green=0;blue=0;
+  i=0;red=0;green=0;blue=0;
   if(running && active) begin
    blue=1;
    if(y<10'd160) begin
@@ -62,3 +62,4 @@ module tt_um_emre_vga_selftest(
  wire _unused=&{ui_in,uio_in,1'b0};
 endmodule
 `default_nettype wire
+
